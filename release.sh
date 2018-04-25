@@ -29,6 +29,3 @@ cp -r $PROJ_DIR '/data/wwwroot/'
 # 创建缓存文件runtime，并给权限777
 mkdir '/data/wwwroot/tp-api/runtime'
 chmod 777 '/data/wwwroot/tp-api/runtime'
-# 复制入口文件
-cp -r '/data/wwwroot/tp-api/account.bak.php' '/data/wwwroot/tp-api/account.php'
-
