@@ -13,11 +13,11 @@
 /**
  * 拼凑 api 数据返回值结构
  * @param        $data
- * @param int    $errcode
- * @param string $errmsg
+ * @param int    $code
+ * @param string $msg
  * @return \think\response\Json
  */
-function generate_api_result($data, $errcode = 0, $errmsg = '')
+function generate_api_result($data, $code = 0, $msg = '')
 {
     // 如果是异常数据
     if ($data instanceof \Exception) {
@@ -26,15 +26,18 @@ function generate_api_result($data, $errcode = 0, $errmsg = '')
     }
 
     $result = array(
-        'errcode' => $errcode,
-        'errmsg' => $errmsg,
+        'code' => $code,
+        'msg' => $msg,
         'timestamp' => time(),
         'result' => $data
     );
     return json($result);
 }
 
-function Error($errmsg, $errcode, $data = [])
-{
-    return generate_api_result($data, $errcode, $errmsg);
-}
+/**
+ * 定义服务器返回的code
+ */
+// 未登录
+const RETURN_CODE_LOGIN = 1000;
+// 统一需要忽略的错误
+const RETURN_CODE_ERROR = 10001;

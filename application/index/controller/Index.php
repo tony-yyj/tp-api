@@ -1,16 +1,12 @@
 <?php
 namespace app\index\controller;
 
-use app\common\controller\ABSController;
+use app\common\controller\AuthController;
 
-class Index extends ABSController
+class Index extends AuthController
 {
     public function index()
     {
-        return $this->_response([
-            'id' => 1,
-            'errcode' => 1000,
-            'errmsg' => '请登录',
-            ]);
+        return $this->_response(['status' => 3]);
     }
 }

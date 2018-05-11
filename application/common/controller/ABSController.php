@@ -1,8 +1,7 @@
 <?php
 namespace app\common\controller;
 
-use think\Controller;;
-use think\Session;
+use think\Controller;
 use think\Request;
 class ABSController extends Controller
 {
@@ -10,9 +9,6 @@ class ABSController extends Controller
     public function __construct(Request $request = null)
     {
         parent::__construct($request);
-        if ($this->checkLogin()) {
-            $this->error('请登录');
-        }
     }
 
     /**
@@ -25,16 +21,8 @@ class ABSController extends Controller
         return generate_api_result($data);
     }
 
-    /**
-     * 检查是否登录
-     * @return bool
-     */
-    public function checkLogin() {
-        if (Session::get('admin')) {
-            return false;
-        } else {
-            return true;
-        }
+    public function _error($msg, $code) {
+        $this->error($msg, $code);
     }
 }
 
