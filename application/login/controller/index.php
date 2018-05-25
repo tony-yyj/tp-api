@@ -4,6 +4,7 @@ namespace app\login\controller;
 use app\common\controller\ABSController;
 use app\common\model\User;
 
+use think\Log;
 use think\Session;
 
 
@@ -15,7 +16,7 @@ class Index extends ABSController
         $password = input('post.password');
 
         if (!$name || !$password) {
-            $this->_error('请输入登录信息',RETURN_CODE_ERROR);
+            $this->_error('请输入登录信息', RETURN_CODE_ERROR);
         }
         $condition = [
             'name' => $name,
